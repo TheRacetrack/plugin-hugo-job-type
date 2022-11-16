@@ -5,7 +5,6 @@ RUN apk add hugo
 WORKDIR /src/hugo_wrapper
 
 COPY hugo_wrapper/. /src/hugo_wrapper/
-RUN go get ./... && rm -rf /src/hugo_wrapper/handler
 
-CMD ./hugo_wrapper < /dev/null
+CMD hugo server -D --port 7000
 LABEL racetrack-component="fatman"

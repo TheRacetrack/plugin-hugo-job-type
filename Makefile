@@ -1,6 +1,7 @@
 run-local:
 	cd hugo-job-type/hugo_wrapper &&\
-	FATMAN_NAME=sample-hugo-page FATMAN_VERSION=0.0.1 go run .
+	FATMAN_NAME=sample-hugo-page FATMAN_VERSION=0.0.1 \
+	hugo server -D --port 7000
 
 test-build:
 	cd hugo-job-type &&\

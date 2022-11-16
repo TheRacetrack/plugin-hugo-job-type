@@ -9,15 +9,6 @@ RUN apk add \
     {{ manifest.system_dependencies | join(' ') }}
 {% endif %}
 
-{% if manifest.golang.gomod %}
-COPY "{{ manifest.golang.gomod }}" /src/fatman/
-RUN cd /src/fatman && go mod download
-{% endif %}
-
-COPY . /src/go_wrapper/handler/
-RUN chmod -R a+rw /src/go_wrapper && cd /src/go_wrapper/ && go mod download
-
-RUN go get ./... && go build -o go_wrapper
 
 ENV FATMAN_NAME "{{ manifest.name }}"
 ENV FATMAN_VERSION "{{ manifest.version }}"
