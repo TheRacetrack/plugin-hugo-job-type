@@ -1,3 +1,3 @@
-[submodule "hugo-job-type/hugo_wrapper/themes/ananke"]
-	path = hugo-job-type/hugo_wrapper/themes/ananke
+[submodule "src/hugo_wrapper/themes/ananke"]
+	path = src/hugo_wrapper/themes/ananke
 	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
