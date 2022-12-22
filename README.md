@@ -11,7 +11,9 @@ It's a language wrapper converting your code compatible with HUGO standards to a
   by uploading the zipped plugin file.
 
 ## Usage
-You can deploy sample Go job by running:
+You can deploy sample HUGO job by running:
 ```bash
-racetrack deploy sample-hugo-page <RACETRACK_URL>
+racetrack deploy sample
 ```
+
+See the [example](./sample).

@@ -5,3 +5,6 @@ lang: hugo:latest
 git:
   remote: https://github.com/TheRacetrack/plugin-hugo-job-type
   directory: sample-hugo-site
+
+wrapper_properties:
+  site_title: 'Hub of the Internet'
