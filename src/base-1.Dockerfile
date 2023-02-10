@@ -8,4 +8,4 @@ RUN pip install -r /src/proxy_wrapper/requirements.txt
 COPY proxy_wrapper/proxy_wrapper/. /src/proxy_wrapper/proxy_wrapper/
 
 CMD python -u -m proxy_wrapper.main run
-LABEL racetrack-component="fatman"
+LABEL racetrack-component="job"
