@@ -16,9 +16,9 @@ from proxy_wrapper.logs import get_logger
 
 logger = get_logger(__name__)
 
-FATMAN_NAME = os.environ.get('FATMAN_NAME', 'fatman_name')
-FATMAN_VERSION = os.environ.get('FATMAN_VERSION', 'fatman_version')
-BASE_URL = f'/pub/fatman/{FATMAN_NAME}/{FATMAN_VERSION}'
+JOB_NAME = os.environ.get('JOB_NAME', 'job_name')
+JOB_VERSION = os.environ.get('JOB_VERSION', 'job_version')
+BASE_URL = f'/pub/job/{JOB_NAME}/{JOB_VERSION}'
 
 
 def serve_proxy():
@@ -61,13 +61,13 @@ def create_fastapi_app() -> FastAPI:
     async def home():
         return RedirectResponse(f"{BASE_URL}/")
 
-    @app.get("/fatman/status")
+    @app.get("/job/status")
     async def _status():
         return {'status': 'ok'}
 
     @app.get("/live")
     async def _live():
-        deployment_timestamp = int(os.environ.get('FATMAN_DEPLOYMENT_TIMESTAMP', '0'))
+        deployment_timestamp = int(os.environ.get('JOB_DEPLOYMENT_TIMESTAMP', '0'))
         return {
             'live': True,
             'deployment_timestamp': deployment_timestamp,
@@ -110,8 +110,8 @@ def create_fastapi_app() -> FastAPI:
 
 
 def setup_endpoints(app: FastAPI):
-    user_module_hostname = os.environ['FATMAN_USER_MODULE_HOSTNAME']
-    user_module_port = int(os.environ.get('FATMAN_USER_MODULE_PORT', 7001))
+    user_module_hostname = os.environ['JOB_USER_MODULE_HOSTNAME']
+    user_module_port = int(os.environ.get('JOB_USER_MODULE_PORT', 7001))
     logger.info(f'Proxying requests to "{user_module_hostname}:{user_module_port}" at base path "{BASE_URL}"')
 
     async def _proxy_endpoint(request: Request):
