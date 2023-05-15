@@ -1,10 +1,12 @@
 name: sample-hugo-site
 owner_email: sample@example.com
-lang: hugo:latest
+jobtype: hugo:latest
+version: 0.0.2
 
 git:
-  remote: https://github.com/TheRacetrack/plugin-hugo-job-type
+  remote: https://github.com/lookacastle/plugin-hugo-job-type
   directory: sample
+  branch: 3-manifest-change-adherance
 
 wrapper_properties:
   site_title: 'Hub of the Internet'
