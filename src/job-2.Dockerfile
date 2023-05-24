@@ -4,5 +4,9 @@ FROM {{ base_image }}
 RUN sed -i '/title =/s/= .*/= "{{ manifest.wrapper_properties['site_title'] }}"/' /src/hugo_site/config.toml
 {% endif %}
 
+{% if manifest.jobtype_extra and manifest.jobtype_extra['site_title'] %}
+RUN sed -i '/title =/s/= .*/= "{{ manifest.jobtype_extra['site_title'] }}"/' /src/hugo_site/config.toml
+{% endif %}
+
 COPY . /src/hugo_site/
 RUN chmod -R a+rw /src/hugo_site/
