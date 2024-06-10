@@ -1,9 +1,22 @@
 class Plugin:
-    def job_types(self) -> dict[str, list[str]]:
+    def job_types(self) -> dict[str, dict]:
         """
         Job types provided by this plugin
-        :return dict of job type name (with version) -> list of images: dockerfile template path relative to a jobtype directory
         """
+        plugin_version: str = getattr(self, 'plugin_manifest').version
         return {
-            f'hugo:{self.plugin_manifest.version}': ['job-1.Dockerfile', 'job-2.Dockerfile'],
+            f'hugo:{plugin_version}': {
+                'images': [
+                    {
+                        'source': 'jobtype',
+                        'dockerfile_path': 'job-1.Dockerfile',
+                        'template': True,
+                    },
+                    {
+                        'source': 'jobtype',
+                        'dockerfile_path': 'job-2.Dockerfile',
+                        'template': True,
+                    },
+                ],
+            },
         }
